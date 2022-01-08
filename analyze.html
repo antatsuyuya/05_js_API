@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="my_chart">
+        Canvas not supported...
+    </canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+    (function() {
+      'use strict';
+
+    let type = 'bar';
+
+      let data = {
+        labels: [2010, 2011, 2012, 2013],
+        datasets: [{
+          label: 'Sales',
+          data: [120, 300, 200, 210],
+          yAxisID:"sales-axis"
+        //   backgroundColor:"skyblue",
+        //   borderWidth:0
+        }, {
+          label: 'Subscribers',
+          // data: [180, 250, 320, 180]
+          data: [802, 1344, 500, 328],
+          type:"line",
+          fill:false,
+          yAxisID:"subscribers-axis"
+        //   backgroundColor:[
+        //       "hsla(90,60%,60%,0.3)",
+        //       "hsla(180,60%,60%,0.3)",
+        //       "hsla(270,60%,60%,0.3)",
+        //       "hsla(360,60%,60%,0.3)",
+        //     ]
+        }]
+      };
+
+      let options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              // min: 0,
+              // max: 400
+              suggestedMin: 0,
+              suggestedMax: 400
+        //       stepSize: 100,
+        //       callback: function(value, index, values) {
+        //         return 'JPY' + value;
+              },
+              id:"sales-axis",
+              type:"linear",
+              position:"left"
+          },
+          {
+            ticks: {
+              // min: 0,
+              // max: 400
+              suggestedMin: 0,
+              suggestedMax: 2000
+        //       stepSize: 100,
+        //       callback: function(value, index, values) {
+        //         return 'JPY' + value;
+              },
+              id:"subscribers-axis",
+              type:"linear",
+              position:"right",
+              gridLines: {
+              display: false
+              }
+          }]
+        }
+        // scales:{
+        //     xAxes:[{
+        //         stacked:true
+        //     }],
+        //     yAxes:[{
+        //         stacked:true
+        // }]
+        // }
+        // title:{
+        //     display:true,
+        //     text:"anual sales",
+        //     fontsiza:18,
+        //     position:"left"
+        // },
+        // animation:{
+        //     duration:0
+        // },
+        // legend:{
+        //     display:false
+        // }
+      };
+      let ctx = document.getElementById('my_chart').getContext('2d');
+      let myChart = new Chart(ctx, {
+        type: type,
+        data: data,
+        options: options
+      });
+    })();
+    </script>
+</body>
+</html>
